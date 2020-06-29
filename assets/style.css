@@ -1,6 +1,8 @@
+.bg-header{
+    background-color: #e0e0e0;
+}
 .header{
     font-family: GillSans, Calibri, Trebuchet, sans-serif;
-    background-color: #ffebee;
     height: auto;
     width: 100%;
     display: inline-block;
@@ -10,7 +12,7 @@
 }
 .sticky{
     font-family: GillSans, Calibri, Trebuchet, sans-serif;
-    background-color: #ffebee;
+    background-color: #fff;
     height: auto;
     width: 100%;
     display: inline-block;
