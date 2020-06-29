@@ -1,0 +1,46 @@
+.header{
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+    background-color: #ffebee;
+    height: auto;
+    width: 100%;
+    display: inline-block;
+    position: fixed;
+    top:0;
+    width: 100%;
+}
+.sticky{
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+    background-color: #ffebee;
+    height: auto;
+    width: 100%;
+    display: inline-block;
+    position: fixed;
+    top:0;
+    width: 100%;
+}
+
+.progress{
+    min-height: 30.5px;
+    overflow: hidden;
+    position: relative;
+}
+span{
+    position: relative;
+    float:left;
+    color:#fff;
+    margin-top: -2.7rem;
+    margin-left: 25em;
+    z-index: 99999;
+}
+
+.determinate{
+    width: 0;
+    transition: width 1s ease-in-out;
+    padding:3px;
+    position: relative;
+    color: #fff;
+    text-align: right;
+    white-space: nowrap;
+    margin-top: -3rem;
+}
+
