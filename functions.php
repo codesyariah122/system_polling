@@ -1,6 +1,5 @@
 <?php
 require 'config.php';
-$dir = 'contents';
 
 function html($direktori, $layout, $ext='.ext', $title){
 	global $dir;
