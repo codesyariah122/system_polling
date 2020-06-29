@@ -19,9 +19,9 @@
 
   <body>
 
-    <?php html('', 'header', '.php', 'Polling Framework css'); ?>
+    <?php html($dir, 'header', '.php', 'Polling Framework css'); ?>
 
-    <?php html('', 'polling', '.php', 'Polling Framework css');?>
+    <?php html($dir, 'polling', '.php', 'Polling Framework css');?>
 
   
       <!--Import jQuery before materialize.js-->
