@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require_once 'config.php';
 
 function html($direktori, $layout, $ext='.ext', $title){
 	global $dir;
@@ -8,9 +8,8 @@ function html($direktori, $layout, $ext='.ext', $title){
 		$title = ($layout === 'footer') ? '' : $title;
 		require_once $dir.'/'.$layout.$ext;
 	}else{
-		echo "<h1 class='text-red'>Layout tidak tersedia</h1>";
+		echo "<h1 class='red-text'>Layout not found</h1>";
 	}
-
 }
 
 function connect(){
@@ -20,41 +19,40 @@ function connect(){
 	$db = DB_NAME;
 
 	try{
-		$conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$conn = new PDO("mysql:host=$server; dbname=$db", $user, $pass);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::
+			ERRMODE_EXCEPTION);
 		return $conn;
-		//echo "Connect Successfully";
+		// echo "Connection sucessfully";
+
 	}catch(PDOException $e){
-		echo "Conection Failed : ".$e->getMessage();
+		echo "Connection failed :".$e->getMessage();
 	}
 }
 
 function framework($query){
-$dbh = connect();
-$result = $dbh->prepare($query);
-$result->execute();
+	$dbh = connect();
+	$result = $dbh->prepare($query);
+	$result->execute();
 
-$rows = [];
-while($row = $result->fetch(PDO::FETCH_OBJ)):
-	$rows[] = $row;
-endwhile;
+	$rows=[];
+	while($row = $result->fetch(PDO::FETCH_OBJ)):
+		$rows[] = $row;
+	endwhile;
 
-return $rows;
-
+	return $rows;
 }
 
+function polling($data, $table){
+	// var_dump($data); die();
+	$framework = $data['framework'];
+	$conn = connect();
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	//string value
+	$sql = "UPDATE `$table` SET value = value+1 WHERE `framework` = '$framework'";
 
-function polling($data,$table){
-$framework = $data['framework'];
-// echo $framework; die;
-$conn = connect();
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$sql = "UPDATE `$table` SET value=value+1 WHERE `id` = $framework";
-$stmt = $conn->prepare($sql);
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
 
-$stmt->execute();
-
-return $stmt->rowCount();
-
+	return $stmt->rowCount();
 }
-

@@ -1,48 +1,31 @@
-.bg-header{
-    background-color: #e0e0e0;
+/*.s6:nth-child(2) h4{
+	margin-top:3rem;
+}*/
+.tooltipped{
+	color: #fff;
 }
-.header{
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-    height: auto;
-    width: 100%;
-    display: inline-block;
-    position: fixed;
-    top:0;
-    width: 100%;
-}
-.sticky{
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-    background-color: #fff;
-    height: auto;
-    width: 100%;
-    display: inline-block;
-    position: fixed;
-    top:0;
-    width: 100%;
+.progress{
+	min-height: 30.5px;
+	overflow: hidden;
+	position: relative;
 }
 
-.progress{
-    min-height: 30.5px;
-    overflow: hidden;
-    position: relative;
-}
 span{
-    position: relative;
-    float:left;
-    color:#fff;
-    margin-top: -2.7rem;
-    margin-left: 25em;
-    z-index: 99999;
+	position: relative;
+	float: left;
+	color: #fff;
+	margin-top: -2.7rem;
+	margin-left: 37.7em;
+	z-index: 99999;
 }
 
 .determinate{
-    width: 0;
-    transition: width 1s ease-in-out;
-    padding:3px;
-    position: relative;
-    color: #fff;
-    text-align: right;
-    white-space: nowrap;
-    margin-top: -3rem;
+	width: 0;
+	transition: width 1s ease-in-out;
+	padding: 3px;
+	position: relative;
+	color: #fff;
+	text-align: right;
+	white-space: nowrap;
+	margin-top: -3rem;
 }
-
