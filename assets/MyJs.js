@@ -1,9 +1,14 @@
 $(document).ready(function(){
-	$('button').on("click", function(){
+	$('button').on("click", function(e){
+
 		const value = $("input[type=radio][name=framework]:checked").val();
-		if(value)
+		if(value){
 			alert("Framework yang kamu pilih : "+value);
-		else
+		}
+		else{
 			alert("Nothing is selected");
+			e.preventDefault();
+		}
+		
 	})
 })
