@@ -1,8 +1,5 @@
 <?php 
-$framework = framework("SELECT * FROM `framework`");
-// echo "<pre>";
-// var_dump($framework); die();
-// echo "</pre>";
+$framework = json_decode(framework("SELECT * FROM `framework`"));
 ?>
 
 <div class="row">
@@ -10,17 +7,18 @@ $framework = framework("SELECT * FROM `framework`");
 if(isset($_GET['p'])):
 	$data=$_GET['p']; 
 	if($_GET['p'] === $data):
-		$frameworkdata = framework("SELECT * FROM `framework` WHERE `framework` = '$data'")[0];
-		// echo "<pre>";
-		// var_dump($framework); die;
-		// echo "</pre>";
+		$frameworkdata = framework("SELECT * FROM `framework` WHERE `framework` = '$data'");
+		$frameworkdata = json_decode($frameworkdata, true);
+		// var_dump($frameworkdata); die;
 ?>
-<div class="card-panel teal lighten-2">Anda baru saja memberikan polling untuk framework <b><font color="blue"><?=$frameworkdata->framework?></font></b>
+
+<div class="card-panel teal lighten-2">Anda baru saja memberikan polling untuk framework <b><font color="blue">
+	<?=$frameworkdata[0]['framework']?></font></b>
 </div>
 <?php endif;endif;?>
 	<div class="col s6">
 		<h4>Framework List : </h4>
-		<form action="" method="post" id="polling">
+		<form action="<?=$_SERVER['PHP_SELF']?>" method="post" id="polling-form">
 			<ul>
 			<?php foreach($framework as $f): ?>
 				<li>
@@ -29,7 +27,7 @@ if(isset($_GET['p'])):
 				</li>
 			<?php endforeach; ?>
 				<li>
-					<button class="btn waves-effect waves-light" type="submit" name="polling">Polling
+					<button class="btn waves-effect waves-light" type="submit" name="polling" id="polling-btn">Polling
 					    <i class="material-icons right">send</i>
 					</button>
 				</li>
@@ -39,9 +37,7 @@ if(isset($_GET['p'])):
 
 <?php 
 if(isset($_REQUEST['polling'])){
-	if(empty($_REQUEST['framework'])){
-		header('Location:index.php');
-	}
+	// var_dump(json_encode($_REQUEST)); die; 
 	if(polling($_REQUEST, 'framework') > 0){
 		header('Location:index.php?p='.$_REQUEST['framework']);
 	}else{
@@ -51,13 +47,6 @@ if(isset($_REQUEST['polling'])){
 } 
 ?>	
 
-	<div class="col s6">
-		<h4>Framework Polling</h4>
-	<?php foreach($framework as $p): ?>
-		<div class="tootltipped progress blue lighten-4" data-position="left" data-tooltip="I am a tooltip"></div><span><?=$p->framework?></span>
-		<div class="determinate blue" style="width:<?=$p->value?>%"><?=$p->value?>%
-		</div>
-	<?php endforeach;?>
-	</div>
-
+<div id="view-data">
+	
 </div>

@@ -40,19 +40,24 @@ function framework($query){
 		$rows[] = $row;
 	endwhile;
 
-	return $rows;
+	return json_encode($rows);
 }
 
 function polling($data, $table){
 	// var_dump($data); die();
 	$framework = $data['framework'];
+	
 	$conn = connect();
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	//string value
 	$sql = "UPDATE `$table` SET value = value+1 WHERE `framework` = '$framework'";
 
 	$stmt = $conn->prepare($sql);
-	$stmt->execute();
+	$stmt->bindParam(':value', $framework);
+	if($stmt->execute()):
+		$result = 1;
+	endif;
+	return $result;
 
-	return $stmt->rowCount();
+	$conn = null;
 }
