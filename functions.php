@@ -44,20 +44,25 @@ function framework($query){
 }
 
 function polling($data, $table){
-	// var_dump($data); die();
-	$framework = $data['framework'];
-	
-	$conn = connect();
-	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	//string value
+	$framework = @$data['framework'];
+
+	$dbh = connect();
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$sql = "UPDATE `$table` SET value = value+1 WHERE `framework` = '$framework'";
-
-	$stmt = $conn->prepare($sql);
+	$stmt = $dbh->prepare($sql);
 	$stmt->bindParam(':value', $framework);
-	if($stmt->execute()):
-		$result = 1;
-	endif;
-	return $result;
+	$stmt->execute();
+	return $stmt->rowCount();
+	// // var_dump($data); die();
+	// $framework = $data['framework'];
+	
+	// $conn = connect();
+	// $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	// //string value
+	// $sql = "UPDATE `$table` SET value = value+1 WHERE `framework` = '$framework'";
 
-	$conn = null;
+	// $stmt = $conn->prepare($sql);
+	// $stmt->bindParam(':value', $framework);
+	// $stmt->execute();
+	// return $stmt->rowCount();
 }

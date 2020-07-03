@@ -18,34 +18,21 @@ if(isset($_GET['p'])):
 <?php endif;endif;?>
 	<div class="col s6">
 		<h4>Framework List : </h4>
-		<form action="<?=$_SERVER['PHP_SELF']?>" method="post" id="polling-form">
 			<ul>
 			<?php foreach($framework as $f): ?>
 				<li>
-					<input class="with-gap" name="framework" value="<?=$f->framework?>" type="radio" id="<?=$f->framework?>">
+					<input class="polling-input with-gap" name="framework" value="<?=$f->framework?>" type="radio" id="<?=$f->framework?>">
 					<label for="<?=$f->framework?>"><?=$f->framework?></label>
 				</li>
 			<?php endforeach; ?>
 				<li>
-					<button class="btn waves-effect waves-light" type="submit" name="polling" id="polling-btn">Polling
+					<button class="polling-btn btn waves-effect waves-light" id="polling-btn">Polling
 					    <i class="material-icons right">send</i>
 					</button>
 				</li>
 			</ul>
-		</form>
 	</div>
 
-<?php 
-if(isset($_REQUEST['polling'])){
-	// var_dump(json_encode($_REQUEST)); die; 
-	if(polling($_REQUEST, 'framework') > 0){
-		header('Location:index.php?p='.$_REQUEST['framework']);
-	}else{
-		header('Location:index.php');
-	$error = true;
-	}
-} 
-?>	
 
 <div id="view-data">
 	
