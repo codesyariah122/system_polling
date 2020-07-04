@@ -12,7 +12,7 @@ $(document).ready(function(){
 					 	$('#view-data').load('contents/view_data.php').fadeIn(1000);
 						$('input[type=radio]').prop("checked", false);
 						swal.fire({
-							position: 'top-end',
+							position: 'bottom-end',
 							icon: 'success',
 							title: 'Your framework : '+framework,
 							showConfirmButton: false, 
