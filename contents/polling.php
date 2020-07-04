@@ -25,11 +25,11 @@ if(isset($_GET['p'])):
 					<label for="<?=$f->framework?>"><?=$f->framework?></label>
 				</li>
 			<?php endforeach; ?>
-				<li>
+<!-- 				<li>
 					<button class="polling-btn btn waves-effect waves-light" id="polling-btn">Polling
 					    <i class="material-icons right">send</i>
 					</button>
-				</li>
+				</li> -->
 			</ul>
 	</div>
 

@@ -23,6 +23,9 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+      <!-- sweet alert 2 -->
+      <script src="assets/package/dist/sweetalert2.all.min.js"></script>
+
       <script type="text/javascript" src="assets/MyJs.js"></script>
 
     </body>

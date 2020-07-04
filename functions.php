@@ -53,4 +53,16 @@ function polling($data, $table){
 	$stmt->bindParam(':value', $framework);
 	$stmt->execute();
 	return $stmt->rowCount();
+	// // var_dump($data); die();
+	// $framework = $data['framework'];
+	
+	// $conn = connect();
+	// $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	// //string value
+	// $sql = "UPDATE `$table` SET value = value+1 WHERE `framework` = '$framework'";
+
+	// $stmt = $conn->prepare($sql);
+	// $stmt->bindParam(':value', $framework);
+	// $stmt->execute();
+	// return $stmt->rowCount();
 }
