@@ -31,36 +31,62 @@
 
 // })
 
+// $(document).ready(function(){
+// 	$('#view-data').hide().load('contents/view_data.php').fadeIn(1000);
+
+// 	$('#polling-btn').on("click", function(e){
+// 		const frameworkValue = $('input[type=radio][name=framework]:checked').val();
+
+// 		if(!frameworkValue){
+// 			alert("Nothing framework selected");
+// 			e.preventDefault();
+// 		}else{
+
+// 			$.ajax({
+// 				url: 'contents/view_data.php?p=polling',
+// 				type: 'post',
+// 				data: 'framework='+frameworkValue,
+// 				success: function(response){
+// 					if(response == 'success'){
+// 						$('#view-data').load('contents/view_data.php');
+// 						//reset input radio button
+// 						$('input[type=radio][name=framework]').prop('checked', false);
+// 					}else{
+// 						alert("You not selected framework polling");
+// 						e.preventDefault();
+// 					}
+// 				}
+// 			}) 
+
+// 		}
+
+
+// 	})
+
+// });
+
 $(document).ready(function(){
 	$('#view-data').hide().load('contents/view_data.php').fadeIn(1000);
 
-	$('#polling-btn').on("click", function(e){
-		const frameworkValue = $('input[type=radio][name=framework]:checked').val();
-
-		if(!frameworkValue){
-			alert("Nothing framework selected");
-			e.preventDefault();
-		}else{
-
+	$('input[type=radio]').click(function(e){
+		const framework = $('input[type=radio][name=framework]:checked').val();
+		if(framework){
 			$.ajax({
 				url: 'contents/view_data.php?p=polling',
 				type: 'post',
-				data: 'framework='+frameworkValue,
+				data: 'framework='+framework,
 				success: function(response){
 					if(response == 'success'){
-						$('#view-data').load('contents/view_data.php');
-						//reset input radio button
-						$('input[type=radio][name=framework]').prop('checked', false);
+						$('#view-data').load('contents/view_data.php').fadeIn(1000);
+						$('input[name=framework]').prop("checked", false);
+						swal.fire("Framework yang kamu pilih : "+framework);
 					}else{
-						alert("You not selected framework polling");
+						swal.fire('Nothing framework selected');
 						e.preventDefault();
 					}
 				}
-			}) 
-
+			});
 		}
-
-
-	})
+	});
 
 });
