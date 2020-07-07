@@ -3,7 +3,7 @@ require_once '../functions.php';
 
 if(@$_GET['p'] == 'polling'):
 	if(polling($_POST, 'framework') > 0):
-		echo "success";
+		echo @$_POST['framework'];
 	endif;
 else:
 $framework = framework("SELECT * FROM `framework`");

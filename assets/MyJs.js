@@ -15,8 +15,8 @@ $(document).ready(function(){
 						$('input[type=radio]').prop("checked", false);
 						swal.fire({
 							position: 'bottom-end',
-							icon: 'info',
-							title: 'You framework : '+framework,
+							icon: 'success',
+							title: 'You framework : '+response,
 							showConfirmButton: false, 
 							timer: 1500
 						});
