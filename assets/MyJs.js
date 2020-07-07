@@ -2,6 +2,7 @@ $(document).ready(function(){
 	$('#view-data').hide().load('contents/view_data.php').fadeIn(1000);
 	$('input[type=radio]').on("click", function(e){
 		const framework = $('input[name=framework]:checked').val();
+
 		if(framework){
 			$.ajax({
 				url: 'contents/view_data.php?p=polling',
@@ -9,12 +10,13 @@ $(document).ready(function(){
 				data: 'framework='+framework,
 				success: function(response){
 				 	if(response){
+				 		const value = $('#progress').val();
 					 	$('#view-data').load('contents/view_data.php').fadeIn(1000);
 						$('input[type=radio]').prop("checked", false);
 						swal.fire({
 							position: 'bottom-end',
-							icon: 'success',
-							title: 'Your framework : '+framework,
+							icon: 'info',
+							title: 'You framework : '+framework,
 							showConfirmButton: false, 
 							timer: 1500
 						});
