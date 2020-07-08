@@ -54,3 +54,15 @@ function polling($data, $table){
 	$stmt->execute();
 	return $stmt->rowCount();
 }
+
+function resetPolling($data){
+	$framework = @$data['framework'];
+
+	$dbh = connect();
+	$sql = "UPDATE `framework` SET value = 0/value, win = win+1 WHERE `framework` = '$framework'";
+	$stmt = $dbh->prepare($sql);
+	$stmt->bindParam(':value', $framework);
+	$stmt->bindParam(':total', $framework);
+	$stmt->execute();
+	return $stmt->rowCount();
+}
