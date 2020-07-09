@@ -3,25 +3,29 @@ session_start();
 require_once '../functions.php';
 $medal = '<i class="fas fa-fw fa-lg fa-medal blue-text"></i>';
 if(@$_GET['p'] == 'polling'):
-	if(!isset($_SESSION['ip'])):
+	if(!isset($_SESSION['ip']) AND !isset($_SESSION['framework']) ):
 		if(polling($_POST, 'framework') > 0):
 			if(!empty($_SERVER['HTTP_CLIENT_IP'])){
 			  $ip = $_SERVER['HTTP_CLIENT_IP'];
 			  $_SESSION['ip'] = $ip;
+			  $_SESSION['framework'] = $_POST['framework'];
 			}elseif(!empty($_SERVER['HTTP_X_FOREWARDED_FOR'])){
 			  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 			  $_SESSION['ip'] = $ip;
+			  $_SESSION['framework'] = $_POST['framework'];
 			}else{
 			  $ip = $_SERVER['REMOTE_ADDR'];
 			  $_SESSION['ip'] = $ip;
+			  $_SESSION['framework'] = $_POST['framework'];
 			}
 			echo @$_POST['framework'];
-	else:
-			echo "<script>alert('anda sudah memberikan polling');</script>";
-	exit;	
-	endif;
 			
-		endif;	
+		endif;
+	else:
+
+		exit();
+			
+	endif;	
 
 elseif(@$_GET['p'] == 'reset'):
 	resetPolling(@$_POST);
@@ -31,6 +35,8 @@ $framework = framework("SELECT * FROM `framework`");
 $framework = json_decode($framework, true); 
 //var_dump($framework); die;
 ?>
+
+
 
 	<div class="col s6">
 		<h4>Framework Polling</h4>
@@ -53,4 +59,6 @@ $framework = json_decode($framework, true);
 	</div>
 
 <?php endif; ?>
+
+
 

@@ -12,8 +12,9 @@ $framework = json_decode(framework("SELECT * FROM `framework`"));
 
 			<ul>
 			<?php foreach($framework as $f): ?>
+				<input type="hidden" name="lastFramework" value="<?=$_SESSION['framework']?>">
 				<li>
-					<input class="polling-input with-gap" name="framework" value="<?=$f->framework?>" type="checkbox" id="<?=$f->framework?>" data-value="<?=$f->value?>" <?php if(isset($_SESSION['ip'])): echo "disabled"; endif; ?>>
+					<input class="polling-input with-gap" name="framework" value="<?=$f->framework?>" type="checkbox" id="<?=$f->framework?>" data-value="<?=$f->value?>">
 					<label for="<?=$f->framework?>"><?=$f->framework?></label>
 				</li>
 			<?php endforeach; ?>

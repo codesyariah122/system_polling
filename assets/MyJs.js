@@ -57,8 +57,28 @@ $(document).ready(function(){
 						});
 
 					}else{
-						swal.fire("Nothing framework selected");
-						e.preventDefault();
+						const lastFramework = $('input[name=lastFramework]').val();
+						Swal.fire({
+						  title: '<strong>Anda telah menggunakan hak <u>Polling</u></strong>',
+						  icon: 'info',
+						  html:
+						    'Framework yang telah anda pilih :  <b>'+lastFramework+'</b>'+
+						    '<br/>See next time.',
+						  showCloseButton: true,
+						  showCancelButton: true,
+						  focusConfirm: false,
+						  confirmButtonText:
+						    '<i class="fa fa-thumbs-up"></i> Great!',
+						  confirmButtonAriaLabel: 'Thumbs up, great!',
+						  cancelButtonText:
+						    '<i class="fa fa-thumbs-down"></i>',
+						  cancelButtonAriaLabel: 'Thumbs down'
+						});
+						
+						setTimeout(function(){
+							$('input[name=framework]').prop("checked", false);
+							e.preventDefault();
+						}, 2500);
 					}
 					
 				}
