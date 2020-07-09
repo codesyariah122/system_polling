@@ -1,4 +1,5 @@
 <?php 
+require_once 'functions.php';
 $framework = json_decode(framework("SELECT * FROM `framework`"));
 // var_dump($framework); 
 // echo $framework[0]->value."<br/><br/>";
@@ -8,11 +9,11 @@ $framework = json_decode(framework("SELECT * FROM `framework`"));
 <div class="row">
 	<div class="col s6">
 		<h4>Framework List : </h4>
+
 			<ul>
 			<?php foreach($framework as $f): ?>
-
 				<li>
-					<input class="polling-input with-gap" name="framework" value="<?=$f->framework?>" type="radio" id="<?=$f->framework?>">
+					<input class="polling-input with-gap" name="framework" value="<?=$f->framework?>" type="checkbox" id="<?=$f->framework?>" data-value="<?=$f->value?>" <?php if(isset($_SESSION['ip'])): echo "disabled"; endif; ?>>
 					<label for="<?=$f->framework?>"><?=$f->framework?></label>
 				</li>
 			<?php endforeach; ?>
@@ -21,7 +22,7 @@ $framework = json_decode(framework("SELECT * FROM `framework`"));
 					    <i class="material-icons right">send</i>
 					</button>
 				</li> -->
-			</ul>
+			</ul>			
 	</div>
 
 

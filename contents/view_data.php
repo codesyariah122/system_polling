@@ -1,10 +1,28 @@
 <?php 
+session_start();
 require_once '../functions.php';
 $medal = '<i class="fas fa-fw fa-lg fa-medal blue-text"></i>';
 if(@$_GET['p'] == 'polling'):
-	if(polling($_POST, 'framework') > 0):
-		echo @$_POST['framework'];
+	if(!isset($_SESSION['ip'])):
+		if(polling($_POST, 'framework') > 0):
+			if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+			  $ip = $_SERVER['HTTP_CLIENT_IP'];
+			  $_SESSION['ip'] = $ip;
+			}elseif(!empty($_SERVER['HTTP_X_FOREWARDED_FOR'])){
+			  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+			  $_SESSION['ip'] = $ip;
+			}else{
+			  $ip = $_SERVER['REMOTE_ADDR'];
+			  $_SESSION['ip'] = $ip;
+			}
+			echo @$_POST['framework'];
+	else:
+			echo "<script>alert('anda sudah memberikan polling');</script>";
+	exit;	
 	endif;
+			
+		endif;	
+
 elseif(@$_GET['p'] == 'reset'):
 	resetPolling(@$_POST);
 	echo @$_POST['framework'];
@@ -18,7 +36,11 @@ $framework = json_decode($framework, true);
 		<h4>Framework Polling</h4>
 	<?php for($i=0; $i <= count($framework[0])-1; $i++): ?>
 	<div class="col s5">
-		<p class="orange-text">Win : <?php for($j=1; $j <= $framework[$i]['win']; $j++): echo $medal; endfor;?> </p>
+		<p class="orange-text">Win :
+		 <?php for($j=1; $j <= $framework[$i]['win']; $j++):?> 
+		 	<?=$medal ?>
+		 <?php endfor; ?>
+		</p>
 
 	</div>
 		<div class="tootltipped progress blue lighten-4" data-position="left" data-tooltip="I am a tooltip"></div>
@@ -31,3 +53,4 @@ $framework = json_decode($framework, true);
 	</div>
 
 <?php endif; ?>
+
