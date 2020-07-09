@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 29, 2020 at 08:39 AM
+-- Generation Time: Jul 09, 2020 at 05:29 PM
 -- Server version: 10.1.44-MariaDB-0+deb9u1
--- PHP Version: 7.3.18-1+0~20200515.59+debian9~1.gbp12fa4f
+-- PHP Version: 7.3.19-1+0~20200612.60+debian9~1.gbp6c8fe1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,33 +23,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `polling`
+-- Table structure for table `framework`
 --
 
-CREATE TABLE `polling` (
+CREATE TABLE `framework` (
   `id` int(11) NOT NULL,
-  `framework` varchar(100) NOT NULL,
-  `value` int(2) NOT NULL
+  `framework` varchar(50) NOT NULL,
+  `value` int(50) NOT NULL,
+  `win` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `polling`
+-- Dumping data for table `framework`
 --
 
-INSERT INTO `polling` (`id`, `framework`, `value`) VALUES
-(1, 'Bootstrap', 0),
-(2, 'Materialize', 0),
-(3, 'Foundation', 0),
-(4, 'Bulma', 0);
+INSERT INTO `framework` (`id`, `framework`, `value`, `win`) VALUES
+(1, 'Bootstrap', 64, 0),
+(2, 'Materialize', 39, 0),
+(3, 'Foundation', 29, 0),
+(4, 'Bulma', 34, 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `polling`
+-- Indexes for table `framework`
 --
-ALTER TABLE `polling`
+ALTER TABLE `framework`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -57,9 +58,9 @@ ALTER TABLE `polling`
 --
 
 --
--- AUTO_INCREMENT for table `polling`
+-- AUTO_INCREMENT for table `framework`
 --
-ALTER TABLE `polling`
+ALTER TABLE `framework`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
