@@ -49,6 +49,7 @@ $framework = json_decode($framework, true);
 		</p>
 
 	</div>
+	<input type="hidden" name="lastFramework" value="<?=$_SESSION['framework']?>">
 		<div class="tootltipped progress blue lighten-4" data-position="left" data-tooltip="I am a tooltip"></div>
 		<span id="framework" data-name="<?=$framework[$i]['framework']?>">
 			<?=$framework[$i]['framework']?>	

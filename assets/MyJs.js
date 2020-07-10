@@ -5,6 +5,7 @@ $(document).ready(function(){
 
 	$('input[type=checkbox]').on("click", function(e){
 		const framework = $('input[name=framework]:checked').val();
+		const value = $(this).attr('data-value');
 
 		// alert(framework);
 
@@ -22,8 +23,6 @@ $(document).ready(function(){
 			icon = 'bulma.png';
 			break;
 		}
-
-		const value = $(this).attr('data-value');
 
 
 		if(framework){
@@ -50,9 +49,8 @@ $(document).ready(function(){
 						}).then((result)=>{
 							if(result.value){
 								$('input[name=framework]').prop("checked", false);
-							    setTimeout(function(){
-							    	location.reload();
-							    }, 1000);
+							}else{
+								$('input[name=framework]').prop("checked", false);
 							}
 						});
 
@@ -78,7 +76,7 @@ $(document).ready(function(){
 						setTimeout(function(){
 							$('input[name=framework]').prop("checked", false);
 							e.preventDefault();
-						}, 2500);
+						}, 1500);
 					}
 					
 				}
@@ -107,15 +105,24 @@ $(document).ready(function(){
 							  confirmButtonText: 'Yeahh, next polling again!'
 							}).then((result) => {
 							  if (result.value) {
-							    Swal.fire(
-							      'Ok !',
-							      'See you next Polling'
-							    );
-							    setTimeout(function(){
+								    Swal.fire(
+								      'Ok !',
+								      'See you next Polling'
+								    );
+								   	$('input[name=framework]').prop("checked", false);
+								    $('#view-data').load('contents/view_data.php').fadeIn(1000);
+								setTimeout(function(){
+									location.reload();
+							    }, 2500);
+								   
+							  }else{
+							  		$('input[name=framework]').prop("checked", false);
 							    	$('#view-data').load('contents/view_data.php').fadeIn(1000);
-							    }, 3000);
+							  	 setTimeout(function(){
+							    	location.reload();
+							    }, 1500);
 							  }
-							})
+							});
 						}
 					}
 			});
