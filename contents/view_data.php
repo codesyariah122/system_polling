@@ -57,7 +57,7 @@ $framework = json_decode($framework, true);
 	</div>
 	<input type="hidden" name="lastFramework" value="<?=$_SESSION['framework']?>">
 		<div class="tootltipped progress blue lighten-4" data-position="left" data-tooltip="I am a tooltip"></div>
-		<span id="framework" data-name="<?=$framework[$i]['framework']?>">
+		<span class="purple-text" id="framework" data-name="<?=$framework[$i]['framework']?>">
 			<?=$framework[$i]['framework']?>	
 		</span>
 		<div id="progress" class="determinate blue"  aria-valuenow="<?=$framework[$i]['value']?>" aria-valuemin="0" aria-valuemax="100" value="<?=$framework[$i]['value']?>" style="width: <?=$framework[$i]['value']?>%"><?=$framework[$i]['value']?>%

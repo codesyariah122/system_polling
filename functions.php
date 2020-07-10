@@ -62,7 +62,7 @@ function resetPolling($data){
 	$sql = "UPDATE `framework` SET value = 0/value, win = win+1 WHERE `framework` = '$framework'";
 	$stmt = $dbh->prepare($sql);
 	$stmt->bindParam(':value', $framework);
-	$stmt->bindParam(':total', $framework);
+	$stmt->bindParam(':win', $framework);
 	$stmt->execute();
 	return $stmt->rowCount();
 }
