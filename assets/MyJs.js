@@ -84,7 +84,7 @@ $(document).ready(function(){
 		}
 
 		if(value >= 99){
-			Swal.fire(framework+' : '+value)
+		//Swal.fire(framework+' : '+value)
 		$('#view-data').hide().load('contents/view_data.php').fadeIn(1000);
 			$.ajax({
 				url: 'contents/view_data.php?p=reset',
