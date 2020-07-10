@@ -66,3 +66,10 @@ function resetPolling($data){
 	$stmt->execute();
 	return $stmt->rowCount();
 }
+
+function sessionPolling($data, $framework){
+	$_SESSION['data'] = $data;
+	$_SESSION['framework'] = $framework;
+
+
+}

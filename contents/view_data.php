@@ -1,23 +1,14 @@
 <?php 
 session_start();
 require_once '../functions.php';
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
 $medal = '<i class="fas fa-fw fa-lg fa-medal blue-text"></i>';
 if(@$_GET['p'] == 'polling'):
-	if(!isset($_SESSION['ip']) AND !isset($_SESSION['framework']) ):
+	if(!isset($_SESSION['data']) AND !isset($_SESSION['framework']) ):
 		if(polling($_POST, 'framework') > 0):
-			if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-			  $ip = $_SERVER['HTTP_CLIENT_IP'];
-			  $_SESSION['ip'] = $ip;
-			  $_SESSION['framework'] = $_POST['framework'];
-			}elseif(!empty($_SERVER['HTTP_X_FOREWARDED_FOR'])){
-			  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-			  $_SESSION['ip'] = $ip;
-			  $_SESSION['framework'] = $_POST['framework'];
-			}else{
-			  $ip = $_SERVER['REMOTE_ADDR'];
-			  $_SESSION['ip'] = $ip;
-			  $_SESSION['framework'] = $_POST['framework'];
-			}
+
+			sessionPolling($userAgent, $_POST['framework']);
+
 			echo @$_POST['framework'];
 			
 		endif;
@@ -28,8 +19,8 @@ if(@$_GET['p'] == 'polling'):
 	endif;	
 
 elseif(@$_GET['p'] == 'reset'):
-	
 	if(!isset($_SESSION['ip']) AND !isset($_SESSION['framework']) ):
+		sessionPolling($userAgent, $_POST['framework']);
 		resetPolling(@$_POST);
 			echo @$_POST['framework'];
 	else:
@@ -40,6 +31,11 @@ else:
 $framework = framework("SELECT * FROM `framework`");
 $framework = json_decode($framework, true); 
 //var_dump($framework); die;
+// if(isset($_SESSION['data']) AND isset($_SESSION['framework'])):
+// 	echo "Browser = ".$_SESSION['data']."<br/>Framework = ".$_SESSION['framework'];
+// else:
+// 	echo "No Session";
+// endif;
 ?>
 
 
