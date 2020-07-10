@@ -28,8 +28,14 @@ if(@$_GET['p'] == 'polling'):
 	endif;	
 
 elseif(@$_GET['p'] == 'reset'):
-	resetPolling(@$_POST);
-	echo @$_POST['framework'];
+	
+	if(!isset($_SESSION['ip']) AND !isset($_SESSION['framework']) ):
+		resetPolling(@$_POST);
+			echo @$_POST['framework'];
+	else:
+		exit();
+	endif;
+
 else:
 $framework = framework("SELECT * FROM `framework`");
 $framework = json_decode($framework, true); 

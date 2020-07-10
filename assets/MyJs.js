@@ -57,11 +57,11 @@ $(document).ready(function(){
 					}else{
 						const lastFramework = $('input[name=lastFramework]').val();
 						Swal.fire({
-						  title: '<strong>Anda telah menggunakan hak <u>Polling</u></strong>',
+						  title: '<strong>Polling session <u>already started</u></strong>',
 						  icon: 'info',
 						  html:
-						    'Framework yang telah anda pilih :  <b>'+lastFramework+'</b>'+
-						    '<br/>See next time.',
+						    '<b class="blue-text">'+lastFramework+'</b> : is the last you chose'+
+						    '<br/><br/><b class="red-text">See next time.</b>',
 						  showCloseButton: true,
 						  showCancelButton: true,
 						  focusConfirm: false,
