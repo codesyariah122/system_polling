@@ -19,7 +19,7 @@ if(@$_GET['p'] == 'polling'):
 	endif;	
 
 elseif(@$_GET['p'] == 'reset'):
-	if(!isset($_SESSION['ip']) AND !isset($_SESSION['framework']) ):
+	if(!isset($_SESSION['data']) AND !isset($_SESSION['framework']) ):
 		sessionPolling($userAgent, $_POST['framework']);
 		resetPolling(@$_POST);
 			echo @$_POST['framework'];
@@ -51,7 +51,9 @@ $framework = json_decode($framework, true);
 		</p>
 
 	</div>
+<?php if(isset($_SESSION['data'])AND isset($_SESSION['framework'])): ?>
 	<input type="hidden" name="lastFramework" value="<?=$_SESSION['framework']?>">
+<?php endif;?>
 		<div class="tootltipped progress blue lighten-4" data-position="left" data-tooltip="I am a tooltip"></div>
 		<span class="purple-text" id="framework" data-name="<?=$framework[$i]['framework']?>">
 			<?=$framework[$i]['framework']?>	
