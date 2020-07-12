@@ -1,4 +1,6 @@
 # system_polling berbasis web jquery, ajax, PHP
+> ***Menggunakan dataType: "JSON"***  
+
 ### menggunakan metode request jquery ajax dan session data PHP
 > load data ke database menggunakan PHP PDO(PHP DATA OBJECT) tanpa reload halaman  
 
