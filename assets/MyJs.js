@@ -7,7 +7,7 @@ $(document).ready(function(){
 		const framework = $('input[name=framework]:checked').val();
 		const value = $(this).attr('data-value');
 
-		// alert(framework);
+		// alert(value);
 
 		switch(framework){
 			case "Bootstrap":
@@ -53,14 +53,16 @@ $(document).ready(function(){
 						}).then((result)=>{
 							if(result.value){
 								$('input[name=framework]').prop("checked", false);
+								$('#view-data').load('contents/view_data.php').fadeIn(1000);
+								setTimeout(function(){
+									location.reload();
+								}, 1500)
+							}else{
+								$('input[name=framework]').prop("checked", false);
+								$('#view-data').load('contents/view_data.php').fadeIn(1000);
 								setTimeout(function(){
 									location.reload();
 								}, 1000)
-							}else{
-								$('input[name=framework]').prop("checked", false);
-								setTimeout(function(){
-									location.reload();
-								}, 500)
 							}
 						});
 
@@ -142,10 +144,21 @@ $(document).ready(function(){
 								      'See you next Polling',
 								      1500
 								    );
+								setTimeout(function(){
+									location.reload();
+								}, 1500);
 								   
 							  }else{
-							  		$('input[name=framework]').prop("checked", false);
-							    	$('#view-data').load('contents/view_data.php').fadeIn(1000);
+							  	$('input[name=framework]').prop("checked", false);
+							    $('#view-data').load('contents/view_data.php').fadeIn(1000);
+							    	Swal.fire(
+								      'Ok !',
+								      'See you next Polling',
+								      1500
+								    );
+							    setTimeout(function(){
+									location.reload();
+								}, 1500);
 							  }
 							});
 						}

@@ -70,6 +70,4 @@ function resetPolling($data){
 function sessionPolling($data, $framework){
 	$_SESSION['data'] = $data;
 	$_SESSION['framework'] = $framework;
-
-
 }
