@@ -1,18 +1,13 @@
 <?php 
-require_once 'functions.php';
 $framework = json_decode(framework("SELECT * FROM `framework`"));
-// var_dump($framework); 
-// echo $framework[0]->value."<br/><br/>";
-// die;
 ?>
 
 <div class="row">
 	<div class="col s6">
 		<h4>Framework List : </h4>
-
 			<ul>
 			<?php foreach($framework as $f): ?>
-				<?php //echo $f->value; ?>
+				<?php //$f->value  ?>
 				<li>
 					<input class="polling-input with-gap" name="framework" value="<?=$f->framework?>" type="checkbox" id="<?=$f->framework?>" data-value="<?=$f->value?>">
 					<label for="<?=$f->framework?>"><?=$f->framework?></label>
@@ -23,7 +18,7 @@ $framework = json_decode(framework("SELECT * FROM `framework`"));
 					    <i class="material-icons right">send</i>
 					</button>
 				</li> -->
-			</ul>			
+			</ul>
 	</div>
 
 
