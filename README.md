@@ -2,6 +2,8 @@
 ### menggunakan metode request jquery ajax dan session data PHP
 > load data ke database menggunakan PHP PDO(PHP DATA OBJECT) tanpa reload halaman  
 
+![System_Polling](https://raw.githubusercontent.com/codesyariah122/system_polling/master/assets/system_polling.gif)  
+
 > polling dibatasi session berdasarkan ip atau user_agent  
 
 ![polling_php1](https://github.com/codesyariah122/system_polling/blob/master/system_polling.png) 
