@@ -4,7 +4,7 @@ $framework = json_decode(framework("SELECT * FROM `framework`"));
 
 <div class="row">
 	<div class="col s6">
-		<h4>Framework List : </h4>
+		<h4>Brand List : </h4>
 			<ul>
 			<?php foreach($framework as $f): ?>
 				<?php //$f->value  ?>

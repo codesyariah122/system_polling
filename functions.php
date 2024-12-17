@@ -44,15 +44,25 @@ function framework($query){
 }
 
 function polling($data, $table){
-	$framework = @$data['framework'];
+    $framework = @$data['framework'];
 
-	$dbh = connect();
-	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql = "UPDATE `$table` SET value = value+1 WHERE `framework` = '$framework'";
-	$stmt = $dbh->prepare($sql);
-	$stmt->bindParam(':value', $framework);
-	$stmt->execute();
-	return $stmt->rowCount();
+    // Validasi nama tabel untuk keamanan
+    $allowedTables = ['framework']; // Daftar tabel yang diperbolehkan
+    if (!in_array($table, $allowedTables)) {
+        throw new Exception("Invalid table name");
+    }
+
+    $dbh = connect();
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Gunakan prepared statement
+    $sql = "UPDATE `$table` SET value = value+1 WHERE `framework` = :framework";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(':framework', $framework, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    return $stmt->rowCount();
 }
 
 function resetPolling($data){
