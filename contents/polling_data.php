@@ -4,7 +4,7 @@ $framework = framework("SELECT * FROM `framework`");
 $framework = json_decode($framework, true);
 ?>
 	<div class="col s6">
-		<h4>Polling Nama Brand Kita</h4>
+		<h4>Persentase Nama Brand Kita</h4>
 	<?php for($i=0; $i<=count($framework); $i++): ?>
 		<div class="tootltipped progress blue lighten-4" data-position="left" data-tooltip="I am a tooltip"></div><span><?=$framework[$i]['framework']?></span>
 		<div class="determinate blue" style="width:<?=$framework[$i]['value']?>%"><?=$framework[$i]['value']?>%

@@ -8,6 +8,7 @@ $(document).ready(function () {
 		const lastFramework = $('input[name=lastFramework]').val();
 
 		if (lastFramework) {
+			console.log(framework);
 			switch (lastFramework) {
 				case "Idea Orbit":
 					icon = "89.jpg";
@@ -108,7 +109,7 @@ $(document).ready(function () {
 				$('input[name=framework]').prop('checked', false);
 				//preventDefault();
 			}, 1500)
-		}
+		} 
 
 
 		//menambahkan icon untuk framework

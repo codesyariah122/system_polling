@@ -57,5 +57,4 @@ else:
 			</div>
 		<?php endfor; ?>
 	</div>
-
 <?php endif; ?>

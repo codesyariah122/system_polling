@@ -46,8 +46,7 @@ function framework($query){
 function polling($data, $table){
     $framework = @$data['framework'];
 
-    // Validasi nama tabel untuk keamanan
-    $allowedTables = ['framework']; // Daftar tabel yang diperbolehkan
+    $allowedTables = ['framework']; 
     if (!in_array($table, $allowedTables)) {
         throw new Exception("Invalid table name");
     }
@@ -82,4 +81,20 @@ function resetPolling($data){
 function sessionPolling($data, $framework){
 	$_SESSION['data'] = $data;
 	$_SESSION['framework'] = $framework;
+}
+
+function getHighestFramework() {
+    $dbh = connect(); // Koneksi ke database
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Query untuk mendapatkan value tertinggi
+    $sql = "SELECT framework, value FROM framework ORDER BY value DESC LIMIT 1";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+
+    // Ambil data hasil query
+    $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+    // Return data dalam format JSON (atau array, tergantung kebutuhan)
+    return $result ? json_encode($result) : json_encode(['error' => 'No data found']);
 }
