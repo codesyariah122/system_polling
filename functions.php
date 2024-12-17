@@ -83,18 +83,16 @@ function sessionPolling($data, $framework){
 	$_SESSION['framework'] = $framework;
 }
 
-function getHighestFramework() {
-    $dbh = connect(); // Koneksi ke database
+function getTopFrameworks($limit = 2) {
+    $dbh = connect();
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Query untuk mendapatkan value tertinggi
-    $sql = "SELECT framework, value FROM framework ORDER BY value DESC LIMIT 1";
+    $sql = "SELECT framework, value FROM framework ORDER BY value DESC LIMIT :limit";
     $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT); // Bind limit
     $stmt->execute();
 
-    // Ambil data hasil query
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
-
-    // Return data dalam format JSON (atau array, tergantung kebutuhan)
-    return $result ? json_encode($result) : json_encode(['error' => 'No data found']);
+    $results = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return !empty($results) ? json_encode($results) : json_encode(['error' => 'No data found']);
 }
+

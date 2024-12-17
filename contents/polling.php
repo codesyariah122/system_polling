@@ -1,6 +1,7 @@
 <?php
 $framework = json_decode(framework("SELECT * FROM `framework`"));
-$highestFramework = json_decode(getHighestFramework());
+$highestFrameworks = json_decode(getTopFrameworks(3));
+
 ?>
 
 <div class="row">
@@ -22,11 +23,13 @@ $highestFramework = json_decode(getHighestFramework());
 				</li> -->
 		</ul>
 		<div>
-			<?php if (!isset($highestFramework->error)): ?>
-				<h5>Framework Terbaik: <?= $highestFramework->framework ?></h5>
-				<p>Nilai: <?=$highestFramework->value ?></p>
+			<?php if (!isset($highestFrameworks->error)): ?>
+				<h5>Polling Terbanyak:</h5>
+				<?php foreach($highestFrameworks as $highestFramework):?>
+					<p><?=$highestFramework->framework?>: <?=$highestFramework->value ?></p>
+				<?php endforeach; ?>
 			<?php else: ?>
-				<p>Error: <?= $highestFramework->error ?></p>
+				<p>Error: <?= $highestFrameworks->error ?></p>
 			<?php endif; ?>
 		</div>
 	</div>

@@ -3,6 +3,8 @@ $(document).ready(function () {
 	$('input[type=checkbox]').on("click", function (e) {
 		const framework = $('input[name=framework]:checked').val();
 
+		console.log(framework)
+
 		const value = $(this).attr('data-value');
 
 		const lastFramework = $('input[name=lastFramework]').val();
@@ -190,6 +192,7 @@ $(document).ready(function () {
 
 		if (framework) {
 			let data = { 'framework': framework };
+			console.log(data)
 			$.ajax({
 				url: 'contents/view_data.php?p=polling',
 				type: 'post',
