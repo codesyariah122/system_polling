@@ -39,7 +39,7 @@ endif;
 	<div class="col s6">
 		<h4>Framework Polling</h4>
 		
-	<?php for($i=0; $i <= count($framework[0])-1; $i++): ?>
+	<?php for($i=0; $i <= count($framework)-1; $i++): ?>
 		<div class="col s5">
 			<p class="orange-text">Win: 
 			<?php for($j=1; $j<=$framework[$i]['win']; $j++): ?>
