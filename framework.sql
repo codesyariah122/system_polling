@@ -37,11 +37,27 @@ CREATE TABLE `framework` (
 -- Dumping data for table `framework`
 --
 
+
 INSERT INTO `framework` (`id`, `framework`, `value`, `win`) VALUES
-(1, 'Bootstrap', 64, 0),
-(2, 'Materialize', 39, 0),
-(3, 'Foundation', 29, 0),
-(4, 'Bulma', 34, 0);
+(1, 'Idea Orbit', 0, 0),
+(2, 'Eureka Minds', 0, 0),
+(3, '⁠Dialog Kreatif', 0, 0),
+(4, 'Mindspark', 0, 0),
+(5, 'URidea', 0, 0),
+(6, 'Sansvieria', 0, 0),
+(7, 'Hexarion', 0, 0),
+(8, 'Sinarupa', 0, 0),
+(9, 'Braind', 0, 0),
+(10, 'Digisense Tech Solution', 0, 0),
+(11, 'Kreatix Media', 0, 0),
+(12, 'Sparklab Digital', 0, 0),
+(13, 'Nexlora', 0, 0),
+(14, 'StartNova', 0, 0),
+(15, 'Zynova', 0, 0),
+(13, 'Vortech Digital', 0, 0),
+(14, 'Ionlab Media', 0, 0),
+(15, 'Quantum Media', 0, 0);
+COMMIT;
 
 --
 -- Indexes for dumped tables
