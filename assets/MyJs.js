@@ -51,7 +51,7 @@ if(lastFramework){
 		$('#view-data').load('contents/view_data.php').fadeIn(1000);
 		$('input[name=framework]').prop('checked', false);
 		//preventDefault();
-	}, 1500);
+	}, 1500)
 }
 
 
@@ -101,12 +101,12 @@ if(lastFramework){
 							  if (result.value) {
 							  	$('input[name=framework]').prop("checked", false);
 							    setTimeout(function(){
-								//location.reload();
+								location.reload();
 							    }, 1000);
 							  }else{
 							  	$('input[name=framework]').prop('checked', false);
 							  	setTimeout(function(){
-							  		//location.reload();
+							  		location.reload();
 							  	}, 500);
 							  }
 							});
@@ -144,19 +144,19 @@ if(lastFramework){
 							  if (result.value) {
 							  	$('input[name=framework]').prop('checked', false);
 							    setTimeout(function(){
-								//location.reload();
+								location.reload();
 							    }, 1000);
 							  }else{
 							  	$('input[name=framework]').prop('checked', false);
 							  	setTimeout(function(){
-							  		//location.reload();
+							  		location.reload();
 							  	}, 500);
 							  }
 							});
 					}
 				}
-			});
+			})
 		}
 
-	});
-});
+	})
+})

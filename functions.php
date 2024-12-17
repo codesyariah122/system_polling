@@ -59,6 +59,8 @@ function resetPolling($data){
 	$framework = @$data['framework'];
 
 	$dbh = connect();
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	//reset value framework
 	$sql = "UPDATE `framework` SET value = 0/value, win = win+1 WHERE `framework` = '$framework'";
 	$stmt = $dbh->prepare($sql);
 	$stmt->bindParam(':value', $framework);
